@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Calculator 2.0</title>
+</head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #d9d9d9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .calculator {
+      width: 300px;
+      background: #3b3b3b;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+      border: 2px solid #2a2a2a;
+    }
+
+    .calculator h2 {
+      text-align: center;
+      margin: 0 0 12px 0;
+      color: #f2f2f2;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+
+    input {
+      width: 100%;
+      height: 55px;
+      font-size: 22px;
+      text-align: right;
+      padding: 8px;
+      border: none;
+      background: #0a0a0a;
+      color: #7cff7c;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      box-sizing: border-box;
+    }
+
+    select {
+      width: 100%;
+      height: 45px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      margin: 8px 0;
+      padding: 5px;
+      background: #e6e6e6;
+      color: #000;
+    }
+
+    button {
+      width: 100%;
+      height: 50px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background: #bfbfbf;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: inset 0 -3px 0 #9a9a9a;
+    }
+
+    button:active {
+      box-shadow: inset 0 3px 0 #9a9a9a;
+      transform: translateY(1px);
+    }
+
+    #result {
+      margin-top: 10px;
+      font-size: 20px;
+      text-align: right;
+      background: #0a0a0a;
+      padding: 10px;
+      border-radius: 8px;
+      color: #7cff7c;
+      min-height: 24px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="calculator">
+  <h2>CALCULATOR</h2>
+
+  <input type="number" id="num1" placeholder="First number">
+  <input type="number" id="num2" placeholder="Second number">
+
+  <select id="operation">
+    <option value="add">Add (+)</option>
+    <option value="sub">Subtract (-)</option>
+    <option value="mul">Multiply (×)</option>
+    <option value="div">Divide (÷)</option>
+  </select>
+
+  <button onclick="calculate()"> ANSWER</button>
+
+  <div id="result">Result: </div>
+</div>
+
+<script>
+function calculate() {
+  let num1 = Number(document.getElementById("num1").value);
+  let num2 = Number(document.getElementById("num2").value);
+  let operation = document.getElementById("operation").value;
+  let result;
+
+  if (operation === "add") {
+    result = num1 + num2;
+  }
+  else if (operation === "sub") {
+    result = num1 - num2;
+  }
+  else if (operation === "mul") {
+    result = num1 * num2;
+  }
+  else if (operation === "div") {
+    if (num2 === 0) {
+      alert("Cannot divide by zero");
+      return;
+    }
+    result = num1 / num2;
+  }
+
+  document.getElementById("result").innerText = "Result: " + result;
+}
+</script>
+
+</body>
+</html>
